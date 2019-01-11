@@ -7,16 +7,18 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Rating.destroy_all
 Movie.destroy_all
 
 
-User.create(username: 'Janu', email: 'janu@example.com', password: 'pass')
+
+User.create(username: 'Janu', email: 'janu@me.com', password: 'pass')
 User.create(username: 'Hannah', email: 'hannah@me.com', password: "word")
 User.create(username: 'Meg', email: 'memegyou@me.com', password: '0000')
 User.create(username: 'Me', email: 'me@me.com', password: '1234')
 puts "There are now #{User.count} rows in the users table"
 
-Movie.create(title: "Guardians of the Milky way",
+Movie.create!(title: "Guardians of the Milky way",
     year: "2017",
     rated: "PG-13",
     released: "05 May 2019",
@@ -32,3 +34,7 @@ Movie.create(title: "Guardians of the Milky way",
     
     website: "https://marvel.com/guardians")
 puts "There are now #{Movie.count} rows in the movies table"
+
+Rating.create!(rating: "10", user_id: User.first.id, movie_id: Movie.first.id)
+puts "There are now #{Rating.count} rows in the users table"
+

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :auth
       resources :users
       resources :movies
-
+      resources :ratings
     end
   end
 end

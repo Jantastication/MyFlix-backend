@@ -1,4 +1,4 @@
-class Api::V1::MoviesController < ApplicationController
+class Api::V1::MoviesController < Api::V1::ApplicationController
     before_action :define_current_movie
     
     def create

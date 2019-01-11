@@ -2,7 +2,7 @@ class CreateMovies < ActiveRecord::Migration[5.2]
   def change
     create_table :movies do |t|
       t.string :title
-      t.integer :year
+      t.string :year
       t.string :rated
       t.string :released
       t.string :runtime
@@ -15,13 +15,12 @@ class CreateMovies < ActiveRecord::Migration[5.2]
       t.text :awards
       t.string :poster
       t.string :ratings
-      t.integer :metascore
-      t.float :imdbRating
+      t.string :metascore
+      t.string :imdbRating
       t.string :imdbID
       t.string :production
       t.string :type
       t.string :website
-      t.belongs_to :user
 
       t.timestamps
     end

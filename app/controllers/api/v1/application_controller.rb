@@ -1,6 +1,6 @@
 class Api::V1::ApplicationController < ApplicationController
 
-    before_action :check_authentication
+    # before_action :check_authentication
 
     def check_authentication
         if !logged_in_user
@@ -9,7 +9,7 @@ class Api::V1::ApplicationController < ApplicationController
     end
 
     def logged_in_user
-        # split_token = request.headers['Authorization'].split(' ')
+        #  split_token = request.headers['Authorization'].split(' ')
         # method = split_token[0]
         # token = split_token[1]
         # \/ Same as above
