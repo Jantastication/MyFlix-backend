@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Rating.destroy_all
 Movie.destroy_all
+Rating.destroy_all
 
 
 
@@ -35,6 +35,6 @@ Movie.create!(title: "Guardians of the Milky way",
     website: "https://marvel.com/guardians")
 puts "There are now #{Movie.count} rows in the movies table"
 
-Rating.create!(rating: "10", user_id: User.first.id, movie_id: Movie.first.id)
+Rating.create!(score: "10", comment: "dope AF", user_id: User.first.id, movie_id: Movie.first.id)
 puts "There are now #{Rating.count} rows in the users table"
 
