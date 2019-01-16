@@ -27,7 +27,7 @@ class Api::V1::RatingsController <Api::V1::ApplicationController
     end
     
     def rating_params
-        params.require(:rating).permit(:rating, :user_id, :movie_id)
+        params.require(:rating).permit(:score, :comment, :user_id, :movie_id)
     end
     
     def define_current_rating
