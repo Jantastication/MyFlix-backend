@@ -41,7 +41,8 @@ ActiveRecord::Schema.define(version: 2019_01_11_200753) do
   end
 
   create_table "ratings", force: :cascade do |t|
-    t.string "rating"
+    t.integer "score"
+    t.text "comment"
     t.bigint "movie_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
