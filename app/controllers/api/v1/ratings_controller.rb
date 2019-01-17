@@ -1,7 +1,7 @@
 class Api::V1::RatingsController <Api::V1::ApplicationController
     before_action :define_current_rating
 
-     skip_before_action :check_authentication, only: [ :index, :create ]
+    #  skip_before_action :check_authentication, only: [ :index, :create ]
     
     def create
         rating = Rating.create(rating_params)

@@ -4,11 +4,12 @@ class Api::V1::AuthController < Api::V1::ApplicationController
         if user && user.authenticate(params[:password])
             render json: {
                 token: JWT.encode({ user_id: user.id }, ENV['my_apps_secret']), 
-                user: user
+                user: user, methods:[ :token ]
             }
         else
             render json: {
-                error: 'username or password are incorrect'
+                error: 'username or password are incorrect',
+                status: 401
             }
         end
     end

@@ -6,4 +6,8 @@ class User < ApplicationRecord
 
     # validates :username, :presence => true, :uniqueness => true
 
+    def token
+        JWT.encode({ user_id: self.id }, ENV['my_apps_secret'])
+    end
+
 end
