@@ -35,6 +35,24 @@ class Api::V1::MoviesController < Api::V1::ApplicationController
             @current_movie = Movie.new
         end
     end
+
+    def my_movies
+
+        #find the user
+        # user.find
+        #WATCHLIST - JUST ADDED= find the ratings in which user is self and score is null/nil/whateva
+        #WATCHED - JUST RATED = find the rating in which user is self and score is not null
+        #return an object/hash like {myWatchList: WATCHLIST(JUST ADDED),  watched: WATCHED(JUST RATED)}
+        @user = User.find(params[:user_id])
+        puts(@user)
+        
+        @myRatings = Rating.where(:user_id => @user.id)
+        @myMovies = @myRatings.map{|rating| Movie.find(rating.movie_id )}
+        
+        render json: @myMovies
+    
+        
+    end
     
     def current_movie
         @current_movie

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :users
       resources :movies
       resources :ratings
+      get '/myMovies/:user_id', to: 'movies#my_movies'
     end
   end
 end
