@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_200753) do
   create_table "ratings", force: :cascade do |t|
     t.integer "score"
     t.text "comment"
-    t.bigint "movie_id"
+    t.string "movie_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

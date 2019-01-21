@@ -4,8 +4,12 @@ class Api::V1::RatingsController <Api::V1::ApplicationController
     #  skip_before_action :check_authentication, only: [ :index, :create ]
     
     def create
-        rating = Rating.create(rating_params)
-        render json: rating
+        @movie = Movie.find_or_create_by(imdbID: params[:imdbID])
+        @rating = Rating.where(movie_id: @movie.id, user_id: params["user_id"]).first_or_create do |rating|
+            rating.score = rating_params[:score]
+            rating.comment = rating_params[:comment]
+        end
+        render json: @rating
     end
     
     def index
@@ -27,7 +31,9 @@ class Api::V1::RatingsController <Api::V1::ApplicationController
     end
     
     def rating_params
-        params.require(:rating).permit(:score, :comment, :user_id, :movie_id)
+        # params.require(:rating).permit(:score, :comment, :user_id, :movie_id)
+        params.permit(:score, :comment, :user_id, :movie_id)
+
     end
     
     def define_current_rating
