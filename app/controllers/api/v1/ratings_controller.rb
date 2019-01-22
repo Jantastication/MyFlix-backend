@@ -4,6 +4,7 @@ class Api::V1::RatingsController <Api::V1::ApplicationController
     #  skip_before_action :check_authentication, only: [ :index, :create ]
     
     def create
+        # @user = User.find_or_create_by(user_id: @user.id)
         @movie = Movie.find_or_create_by(imdbID: params[:imdbID])
         @rating = Rating.where(movie_id: @movie.id, user_id: params["user_id"]).first_or_create do |rating|
             rating.score = rating_params[:score]

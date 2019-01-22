@@ -13,4 +13,9 @@ class Api::V1::AuthController < Api::V1::ApplicationController
             }
         end
     end
+
+    def get_user_from_token
+        @user = logged_in_user
+        render json: @user
+    end
 end

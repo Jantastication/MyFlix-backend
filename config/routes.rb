@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :movies
       resources :ratings
       get '/myMovies/:user_id', to: 'movies#my_movies'
+      get '/getUserFromToken', to: 'auth#get_user_from_token'
     end
   end
 end

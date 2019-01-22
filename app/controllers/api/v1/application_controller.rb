@@ -14,10 +14,10 @@ class Api::V1::ApplicationController < ApplicationController
         # token = split_token[1]
         # \/ Same as above
         if request.headers['Authorization']
-            method, token = request.headers['Authorization'].split(' ')
+            method, token = request.headers['Authorization'].split(' ') 
             begin
-                payload, headers = JWT.decode(token, 'my_apps_secret')
-                current_user = User.find(payload['user_id'])
+                payload = JWT.decode(token, ENV['my_apps_secret'])
+                current_user = User.find(payload[0]['user_id'])
             rescue JWT::DecodeError
                 nil
             end
