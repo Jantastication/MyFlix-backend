@@ -53,6 +53,12 @@ class Api::V1::MoviesController < Api::V1::ApplicationController
     
         
     end
+
+    def destroy_my_movie
+        @rating = Rating.where(user_id: params[:user_id], movie_id: params[:movie_id])
+        Rating.destroy(@rating[0].id)
+        render json: @rating
+    end
     
     def current_movie
         @current_movie
