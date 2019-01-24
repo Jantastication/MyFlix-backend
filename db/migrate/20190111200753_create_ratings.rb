@@ -4,8 +4,8 @@ class CreateRatings < ActiveRecord::Migration[5.2]
       t.integer :score
       t.text :comment
 
-      t.belongs_to :movie
-      t.belongs_to :user
+      t.belongs_to :movie, foreign_key: true
+      t.belongs_to :user, foreign_key: true
 
       t.timestamps
     end

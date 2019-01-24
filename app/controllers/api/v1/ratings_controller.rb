@@ -5,8 +5,9 @@ class Api::V1::RatingsController <Api::V1::ApplicationController
     
     def create
         # @user = User.find_or_create_by(user_id: @user.id)
-        @movie = Movie.find_or_create_by(imdbID: params[:imdbID])
-        @rating = Rating.where(movie_id: @movie.id, user_id: params["user_id"]).first_or_create do |rating|
+        
+        @movie = Movie.find_or_create_by(imdbID: params[:imdbID], poster: params[:poster], title: params[:title])
+        @rating = Rating.where(movie_id: @movie.id, user_id: logged_in_user.id).first_or_create do |rating|
             rating.score = rating_params[:score]
             rating.comment = rating_params[:comment]
         end

@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2019_01_11_200753) do
     t.string "language"
     t.text "awards"
     t.string "poster"
-    t.string "ratings"
     t.string "metascore"
     t.string "imdbRating"
     t.string "imdbID"
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_01_11_200753) do
   create_table "ratings", force: :cascade do |t|
     t.integer "score"
     t.text "comment"
-    t.string "movie_id"
+    t.bigint "movie_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,4 +58,6 @@ ActiveRecord::Schema.define(version: 2019_01_11_200753) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ratings", "movies"
+  add_foreign_key "ratings", "users"
 end

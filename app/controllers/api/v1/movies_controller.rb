@@ -44,14 +44,20 @@ class Api::V1::MoviesController < Api::V1::ApplicationController
         #WATCHED - JUST RATED = find the rating in which user is self and score is not null
         #return an object/hash like {myWatchList: WATCHLIST(JUST ADDED),  watched: WATCHED(JUST RATED)}
         @user = User.find(params[:user_id])
-        puts(@user)
+        # puts(@user)
         
-        @myRatings = Rating.where(:user_id => @user.id)
-        @myMovies = @myRatings.map{|rating| Movie.find(rating.movie_id )}
+        # @myRatings = Rating.where(:user_id => @user.id)
+        # @myMovies = @myRatings.map{|rating| Movie.find(rating.movie_id )}
         
-        render json: @myMovies
+        render json: @user.movies
     
         
+    end
+
+    def destroy_my_movie
+        @rating = Rating.where(user_id: params[:user_id], movie_id: params[:movie_id])
+        Rating.destroy(@rating[0].id)
+        render json: @rating
     end
     
     def current_movie
